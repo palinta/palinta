@@ -44,12 +44,14 @@ func main() {
 		log.WithFields(log.Fields{
 			"error": err,
 		}).Error("Unable to connect to the MQTT broker")
+		os.Exit(1)
 	}
 	err = subscribeForPalintaTopics(client)
 	if err != nil {
 		log.WithFields(log.Fields{
 			"error": err,
 		}).Error("Unable to subscribe for tokens")
+		os.Exit(1)
 	}
 
 	for {
